@@ -2,12 +2,12 @@
  * @author Pepe Gallardo
  * @modifiedby Jose A. Onieva
  * @modifiedby Ricardo Conejo
- * Implementación de otros métodos de ordenación para comparar tiempos de ejecución
+ * Implementacion de otros metodos de ordenacion para comparar tiempos de ejecucion
  */
 
 public class OrdenacionBurbuja extends Ordenacion {
-	
-    // Implementación de ordenación por burbuja (para comparar tiempos experimentalmente)
+
+    // Implementacion de ordenacion por burbuja (para comparar tiempos experimentalmente)
 	public static <T extends Comparable<? super T>> void ordenar(T v[]) {
 		boolean seguir = true;
 		for(int i=v.length-1; seguir; i--) {
@@ -19,5 +19,5 @@ public class OrdenacionBurbuja extends Ordenacion {
 				}
 		}
 	}
-	
+
 }

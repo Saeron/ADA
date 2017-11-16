@@ -1,19 +1,19 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
-// ALUMNO:
-// GRUPO:
+// ALUMNO:Antonio GutiÃ©rrez Ojeda
+// GRUPO:2C
 ////////////////////////////////////////////////////////////////////////////////////////////
-
+import java.util.Arrays;
 public class OrdenacionJava extends Ordenacion {
-    
-	
+
+
    public static <T extends Comparable<? super T>> void ordenar(T v[]) {
-        // A implementar por el alumno
+        Arrays.sort(v);
    }
 
 
-	// Pequeños ejemplos para pruebas iniciales.
+	// Pequenos ejemplos para pruebas iniciales.
 	public static void main (String args[]) {
-	
+
 		// Un vector de enteros
 		Integer vEnt[] = {3,8,6,5,2,9,1,1,4};
 		ordenar(vEnt);
@@ -24,6 +24,6 @@ public class OrdenacionJava extends Ordenacion {
 		ordenar(vCar);
 		System.out.println(vectorAString(vCar));
 
-	}	
-    
+	}
+
 }
