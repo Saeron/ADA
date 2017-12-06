@@ -10,7 +10,8 @@ public class OrdenacionRapida extends Ordenacion {
 	}
 
 	// Debe ordenar ascendentemente los primeros @n elementos del vector @v con
-	// una implementaci�n recursiva del m�todo de ordenaci�n r�pida.
+	// una implementacien recursiva del metodo de ordenacien rapida.
+	//complejidad de ordenar es n log n
 	public static <T extends Comparable<? super T>> void ordRapidaRec(T v[], int izq, int der) {
     if(izq < der){
       T pivote = v[der];
@@ -25,6 +26,7 @@ public class OrdenacionRapida extends Ordenacion {
      v[der]=aux;
 
    }
+	 //complejidad del partir es n
    public static <T extends Comparable<? super T>> int partir(T v[], T pivote, int izq, int der) {
 		 return primero(v,pivote,izq,der);
 		 //return hoare(v,pivote,izq,der);
