@@ -1,0 +1,92 @@
+/**
+ *
+ * @author ** Indicar aqui el autor de la practica ****
+ *
+ */
+public class MochilaPD extends Mochila {
+
+	public static int max2 (int a, int b){
+		return (a>b)?a:b;
+	}
+
+	public static int[][] generaMatriz(ProblemaMochila pm){
+		int n = pm.size();
+		int[][] v = new int [n+1][pm.pesoMaximo+1];
+		for(int c=0;c<=pm.pesoMaximo;c++){
+			v[0][c]=0;
+		}
+		for(int elem=1;elem<=n;elem++){
+			for(int c=0;c<=pm.pesoMaximo;c++){
+				if(c<pm.items.get(elem-1).peso){
+					v[elem][c]=v[elem-1][c];
+				}else{
+					v[elem][c] = max2(v[elem-1][c], v[elem-1][c-pm.getPeso(elem-1)]+pm.getValor(elem-1));
+				}
+			}
+		}
+		return v;
+	}
+
+	public static void buscaSolucion(int[] solucion, ProblemaMochila pm, int fila, int columna, int[][] mat){
+		if(fila>0 && columna>0){
+			if(mat[fila-1][columna]<mat[fila][columna]){
+			solucion[fila-1]=1;
+			buscaSolucion(solucion, pm, fila-1, columna-pm.getPeso(fila-1), mat);
+			}else{
+			solucion[fila-1]=0;
+			buscaSolucion(solucion, pm, fila-1, columna, mat);
+			}
+		}
+	}
+
+	int[] generaSolucion(ProblemaMochila pm, int[][] mat){
+		int filas = pm.items.size();
+		int columnas = pm.pesoMaximo;
+		int filactual=filas;
+		int colactual=columnas;
+		int[] solucion = new int[pm.size()];
+		buscaSolucion(solucion, pm, filactual, colactual, mat);
+		return solucion;
+	}
+
+	public static int sumatorioPesos(ProblemaMochila pm, int[] sol){
+		int suma=0;
+		for(int cont=0;cont<sol.length;cont++){
+			if(sol[cont]==1){
+				suma+=pm.items.get(cont).peso;
+			}
+		}
+		return suma;
+	}
+
+	public static int sumatorioValores(ProblemaMochila pm, int[] sol){
+		int suma=0;
+		for(int cont=0;cont<sol.length;cont++){
+			if(sol[cont]==1){
+				suma+=pm.items.get(cont).valor;
+			}
+		}
+		return suma;
+	}
+
+	public SolucionMochila resolver(ProblemaMochila pm) {
+		SolucionMochila sm = null;
+        // Completar la implementacion
+		int[][] matriz = generaMatriz(pm);
+    imprimir(matriz);
+		int[] solucion = generaSolucion(pm, matriz);
+		int sumapesos=sumatorioPesos(pm, solucion);
+		int sumavalores=sumatorioValores(pm, solucion);
+		sm = new SolucionMochila(solucion, sumapesos, sumavalores);
+		return sm;
+	}
+
+  public void imprimir(int[][] V){
+		for (int[] rows : V) {
+            for (int col : rows) {
+                System.out.format("%5d", col);
+            }
+            System.out.println();
+        }
+			}
+}

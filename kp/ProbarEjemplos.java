@@ -1,6 +1,6 @@
 
 class ProbarEjemplos {
-	
+
 	private static void probar(Mochila m, LectorFicheroEjemplos lf,int maxDim) {
 		for(int i=0; i<lf.size(); i++) {
 			ProblemaMochila problema = lf.problema(i);
@@ -20,14 +20,14 @@ class ProbarEjemplos {
 			}
 		}
 	}
-	
+
 	public static void main(String args[]) {
 		LectorFicheroEjemplos lf = new LectorFicheroEjemplos("ejemplos.txt");
-		
-		// Probar el metodo de fuerza bruta
-		probar(new MochilaFB(), lf, 20);
-		System.out.println("El metodo de fuerza bruta supera las pruebas de los ejemplos");
 
+		// Probar el metodo de fuerza bruta
+		/*probar(new MochilaFB(), lf, 20);
+		System.out.println("El metodo de fuerza bruta supera las pruebas de los ejemplos");
+*/
 		// Probar la solucion de programacion dinámica
 		probar(new MochilaPD(), lf, 100);
 		System.out.println("El metodo de Programacion Dinámica supera las pruebas de los ejemplos");
@@ -35,6 +35,7 @@ class ProbarEjemplos {
 		// Probar la solucion de programacion dinámica
 		probar(new MochilaAV(), lf, 100);
 		System.out.println("El metodo de Algorimos Voraces supera las pruebas de los ejemplos");
+
 	}
-	
+
 }
